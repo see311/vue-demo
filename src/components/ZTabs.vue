@@ -131,8 +131,6 @@ export default {
         }
       });
       this.$store.commit("ejectTag", i);
-      console.log(i);
-      
       this.$nextTick(() => {
         console.log(this.pageTagsList);
         

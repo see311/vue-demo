@@ -7,17 +7,17 @@
     <div id="nav">
       <router-link :to="{name:'home'}">Home</router-link>|
       <router-link :to="{name:'about'}">About</router-link>|
-      <router-link :to="{name:'test'}">test</router-link>
+      <router-link :to="{name:'test1'}">test1</router-link>|
+      <router-link :to="{name:'test2'}">test2</router-link>
     </div>
-    <a @click.prevent="toTest">toTest</a>
     <router-view/>
   </div>
 </template>
 
 <script>
 import ZTabs from "@/components/ZTabs.vue";
-import Store from '@/store'
-import Router from '@/router'
+import Store from "@/store";
+import Router from "@/router";
 export default {
   components: {
     ZTabs
@@ -30,22 +30,28 @@ export default {
         return;
       }
       this.$store.commit("setTagList", route);
-    },
-    toTest(){
-      this.$router.push('/zeratul/test')
     }
   },
-  beforeRouteEnter(to,from,next){
-    Store.commit('setTagList',Router.match({ name: "home" }))
-    !Store.state.tagList.find(e => e.name === to.name) && Store.commit('setTagList',to)
-    next()
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   // console.log('enter',to.name);
+    
+  //   // Store.commit("setTagList", Router.match({ name: "home" }));
+  //   // !Store.state.tagList.find(e => e.name === to.name) &&
+  //   //   Store.commit("setTagList", to);
+  //   next();
+  // },
   beforeRouteUpdate(to, from, next) {
-    !this.$store.state.tagList.find(e => e.name === to.name) && this.addTag(to);
+    console.log("toname", to.name);
+    console.log("fromname", from.name);
+    console.log("-------------------------");
+
     next();
+    !this.$store.state.tagList.find(e => e.name === to.name) && this.addTag(to);
   },
   created() {
-    this.$store.commit("setTagList", this.$router.match({ name: "test" }));
+    this.$store.commit("setTagList", this.$router.match({ name: "home" }));
+    this.addTag(this.$route);
+    
     // this.$store.commit("setTagList", this.$router.match({ name: "about" }));
   }
 };

@@ -9,9 +9,8 @@ export default new Vuex.Store({
   },
   mutations: {
     setTagList(state, payload) {
-      if (!state.tagList.find(e => e.fullPath == payload.fullPath)) {
+      if (!state.tagList.find(e => e.fullPath == payload.fullPath))
         state.tagList.push(payload);
-      }
     },
     ejectTag(state, i) {
       state.tagList.splice(i, 1);

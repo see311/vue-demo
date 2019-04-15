@@ -36,11 +36,21 @@ export default new Router({
             import(/* webpackChunkName: "about" */ "./views/About.vue")
         },
         {
-          path: "test",
-          name: "test",
+          path: "test1",
+          name: "test1",
           meta: {
-            menuCode: "test",
-            menuName: "test"
+            menuCode: "test1",
+            menuName: "test1"
+          },
+          component: () =>
+            import(/* webpackChunkName: "test" */ "./views/test.vue")
+        },
+        {
+          path: "test2",
+          name: "test2",
+          meta: {
+            menuCode: "test2",
+            menuName: "test2"
           },
           component: () =>
             import(/* webpackChunkName: "test" */ "./views/test.vue")

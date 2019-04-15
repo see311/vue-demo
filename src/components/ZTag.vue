@@ -1,4 +1,5 @@
 <template>
+
   <router-link class="z-tag" :to="to.path">
     <span class="router-text" :style="{'margin-right':(to.name == 'home'||!active)?'0':'10px'}">
       <slot></slot>
