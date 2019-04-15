@@ -23,6 +23,7 @@
 
 <script>
 import ZTag from "./ZTag";
+import { setTimeout } from 'timers';
 export default {
   name: "tagsPageOpened",
   components: {
@@ -131,7 +132,7 @@ export default {
         }
       });
       this.$store.commit("ejectTag", i);
-      this.$nextTick(() => {
+      setTimeout(() => {
         console.log(this.pageTagsList);
         
         if (this.pageTagsList[i]) {
@@ -145,7 +146,7 @@ export default {
           
           this.$router.push(this.pageTagsList[i - 1].fullPath);
         }
-      });
+      },0)
     });
   },
   watch: {

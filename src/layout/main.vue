@@ -46,7 +46,7 @@ export default {
     console.log("-------------------------");
 
     next();
-    !this.$store.state.tagList.find(e => e.name === to.name) && this.addTag(to);
+    this.addTag(to);
   },
   created() {
     this.$store.commit("setTagList", this.$router.match({ name: "home" }));
